@@ -68,3 +68,14 @@ function drop_handler(event) {
     let data = event.dataTransfer.getData('img/jpg');
     event.target.append(document.getElementById('target'));
 }
+//           LOAD 
+window.addEventListener('load', function() {
+    console.log('all the resources have finished loading!');
+});
+//           FOCUS
+const focusMethod = function getFocus() {
+    document.getElementById('button').focus();
+}
+const button = document.getElementsByClassName('btn');
+console.log(button);
+button[2].addEventListener('click', focusMethod);
