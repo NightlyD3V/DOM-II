@@ -8,13 +8,17 @@ function addEventListenerList(list,event,fn) {
         list[i].addEventListener(event, fn);
     }
 }
+//prevent default click value
+addEventListenerList(navItems, 'click', function(element) {
+    element.preventDefault();
+});
+// nav 'animation'
 addEventListenerList(navItems, 'mouseover', function() {
     this.style.position = "relative";
     this.style.bottom = "10px";
 });
-//buggy*
-addEventListenerList(navItems, 'mouseleave', (function(e) {
-        e.preventDefault();
+// buggy*
+addEventListenerList(navItems, 'mouseleave', (function() {
         this.style.bottom = "";
     }));
 //            KEYDOWN
@@ -84,6 +88,19 @@ window.addEventListener('resize', function() {
     //alert('window resized!');
 });
 //          SCROLL
-button[0].addEventListener('click', function() {
+button[0].addEventListener('click', function(event) {
+    //stop propagation of destinationClass
+    event.stopPropagation();
     window.scroll({top: 1, behavior: 'smooth'});
+});
+//unsure of how to use select besides the given example in mdn
+//        DOUBLE CLICK
+button[1].addEventListener('dblclick', function() {
+    button[1].style.backgroundColor = getRandomColor();
+});
+//        PROPAGATION 
+const destinationClass = document.querySelectorAll('.destination');
+console.log(destinationClass);
+destinationClass[0].addEventListener('click', function() {
+    alert('this will not propagate!');
 });
