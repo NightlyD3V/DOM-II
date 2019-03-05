@@ -79,3 +79,11 @@ const focusMethod = function getFocus() {
 const button = document.getElementsByClassName('btn');
 console.log(button);
 button[2].addEventListener('click', focusMethod);
+//          RESIZE 
+window.addEventListener('resize', function() {
+    //alert('window resized!');
+});
+//          SCROLL
+button[0].addEventListener('click', function() {
+    window.scroll({top: 1, behavior: 'smooth'});
+});
